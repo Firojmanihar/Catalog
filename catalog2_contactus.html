@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sihauli Digital Private Limited</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20%;
+        }
+        
+        .company-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: gray;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .contact-info button {
+            background-color: olive;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info button:hover {
+            background-color: darkolivegreen;
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: #d4d4d4;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: olive;
+        }
+        
+        .search-btn {
+            background-color: olive;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background-color: darkolivegreen;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #333;
+            padding: 40px 20%;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .contact-details {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details p {
+            margin: 8px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-details a {
+            color: olive;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: darkolivegreen;
+        }
+        
+        .contact-form {
+            flex: 1;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 5px;
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-form textarea,
+        .contact-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .contact-form textarea:focus,
+        .contact-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px olive;
+        }
+        
+        .contact-form textarea {
+            height: 120px;
+        }
+        
+        .contact-form button {
+            background-color: olive;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: darkolivegreen;
+            transform: translateY(-2px);
+        }
+        
+        label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 30px 20%;
+            background-color: white;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column a {
+            display: flex;
+            align-items: center;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 14px;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: olive;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: #333;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: olive;
+            transform: scale(1.2);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .footer-bottom a {
+            color: olive;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-bottom a:hover {
+            color: darkolivegreen;
+        }
+        
+        @media (max-width: 768px) {
+            .header-top, .navbar, .contact-section, .footer {
+                padding: 15px 10%;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .contact-info button {
+                width: 100%;
+                margin-left: 0;
+            }
+            
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-bottom: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        .nav-links li a.active {
+    color: olive;
+}
+
+.nav-links li a.active::after {
+    background-color: olive;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="company-info">
+                <div class="logo-text">The Sihauli Digital Private Limited</div>
+                <p><i class="fas fa-map-marker-alt"></i> Rustamji Building J19 Shop Number 102 Global City Virar West</p>
+            </div>
+            <div class="contact-info">
+                <button class="call-btn"><i class="fas fa-phone-alt"></i> Call 088XXXXXXXX</button>
+                <a href="{% url 'catalog2_send_email' %}"><button class="email-btn"><i class="fas fa-envelope"></i> Send Email</button></a>
+            </div>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="{% url 'catalog2' %}" class="{% if request.path == '/catalog2/' %}active{% endif %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'catalog2_aboutus' %}" class="{% if request.path == '/catalog2/aboutus/' %}active{% endif %}"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="{% url 'catalog2_contactus' %}" class="{% if request.path == '/catalog2/contactus/' %}active{% endif %}"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search Products/Services">
+                <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-details">
+                <h3><i class="fas fa-address-card"></i> Contact Us</h3>
+                <p><i class="fas fa-user"></i> Deepak Yadav</p>
+                <p><i class="fas fa-building"></i> <strong>The Sihauli Digital Private Limited</strong></p>
+                <p><i class="fas fa-map-pin"></i> C1, Plot No. 219</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rustamji Building J19 Shop Number 102 Global City Virar West</p>
+                <p><a href="#"><i class="fas fa-directions"></i> Get Directions ➜</a></p>
+                <p><a href="#"><i class="fas fa-envelope"></i> Send Email</a></p>
+                <p><a href="#"><i class="fas fa-phone-alt"></i> 088XXXXXXXX</a></p>
+            </div>
+            <div class="contact-form">
+                <h3><i class="fas fa-edit"></i> Describe Your Requirements</h3>
+                <textarea placeholder="Enter your requirements..."></textarea>
+
+                <label for="name"><i class="fas fa-user"></i> <h3>Name</h3></label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="phone"><i class="fas fa-phone"></i> <h3>Phone Number</h3></label>
+                <input type="number" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4><i class="fas fa-building"></i> Company</h4>
+                <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="#"><i class="fas fa-newspaper"></i> News</a>
+                <a href="#"><i class="fas fa-sitemap"></i> Sitemap</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-cogs"></i> Our Services</h4>
+                <a href="#"><i class="fas fa-laptop-code"></i> Service Group 3</a>
+                <a href="#"><i class="fas fa-bullhorn"></i> Service Group 1</a>
+                <a href="#"><i class="fas fa-mobile-alt"></i> Service Group 2</a>
+                <a href="#"><i class="fas fa-eye"></i> View All →</a>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-share-alt"></i> Share Us:</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <i class="far fa-copyright"></i> The Sihauli Digital Private Limited. All Rights Reserved (<a href="#"><i class="fas fa-file-contract"></i> Terms of Use</a>)<br>
+            Developed and Managed by <a href="#"><i class="fas fa-code"></i> Sihauli Digital PVT LTD</a>
+        </div>
+    </footer>
+    
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get current URL path
+    const currentPath = window.location.pathname;
+    
+    // Get all nav links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Remove active class from all links
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        
+        // Check if link's href matches current path
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Add click event to manually set active class
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+});
+
+
+
+        document.querySelector('.call-btn').addEventListener('click', function() {
+            alert('Calling 088XXXXXXXX...');
+        });
+
+        document.querySelector('.email-btn').addEventListener('click', function() {
+            alert('Opening email client...');
+        });
+
+        document.querySelector('.contact-form button').addEventListener('click', function() {
+            const textarea = document.querySelector('.contact-form textarea');
+            if (textarea.value.trim() === '') {
+                alert('Please describe your requirements');
+            } else {
+                alert('Thank you for your submission! We will contact you soon.');
+                textarea.value = '';
+            }
+        });
+
+        document.querySelectorAll('.contact-details a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const action = this.textContent.trim();
+                alert(`${action} clicked - this would open the appropriate service`);
+            });
+        });
+    </script>
+</body>
+</html>

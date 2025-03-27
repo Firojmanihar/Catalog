@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog1</title>
+  <style>
+    body {
+
+      margin: 0;
+      padding: 0;
+
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header,
+    footer {
+      width: 100%;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-info h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .company-info p {
+      font-size: 12px;
+      margin: 0;
+      color: #555;
+    }
+
+    .email-button {
+      background: #2b6ed8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    main {
+      display: flex;
+
+    }
+
+    .general-settings {
+      width: 340px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      height: fit-content;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .sidebar ul li:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .submenu1 {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background: white;
+      color: black;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      min-width: 200px;
+    }
+
+    .submenu1 li {
+      padding: 10px;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+
+    .sidebar ul li:hover>.submenu1 {
+      display: block;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .content {
+      width: 100%;
+
+      text-align: left;
+    }
+
+    main {
+      flex: 2;
+      padding: 20px;
+    }
+
+    .showroom {
+      background-color: #fff;
+
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex: 2;
+    }
+
+    .category {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+
+    }
+
+    .category img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+
+    .details ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .details ul li {
+      width: 45%;
+      padding: 5px 0;
+    }
+
+    .more-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .more-btn:hover {
+      background-color: darkred;
+    }
+
+
+    .contact-details,
+    .contact-form {
+      width: 48%;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .buttons {
+      margin-top: 15px;
+      margin-left: 10%;
+    }
+
+    .call-button,
+    .sms-button {
+      padding: 10px 15px;
+      border: 1px solid black;
+      background-color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-details,
+    .contact-form {
+      width: 48%;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .buttons {
+      margin-top: 15px;
+      margin-left: 10%;
+    }
+
+    .call-button,
+    .sms-button {
+      padding: 10px 15px;
+      border: 1px solid black;
+      background-color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .contact-form {
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .buttons-group button {
+      margin: 5px;
+      padding: 8px 12px;
+      border: none;
+      background: #eee;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 90%;
+      height: 50px;
+      margin-top: 10px;
+      padding: 5px;
+      margin-left: 2%;
+    }
+
+    .phone-input {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+
+    }
+
+    .phone-input input {
+
+      padding: 5px;
+      margin-left: 5px;
+      width: 77%;
+    }
+
+    .contact-now {
+      width: 50%;
+      padding: 10px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #f8f8f8;
+      padding: 20px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-container div {
+      width: 23%;
+    }
+
+    .footer-container h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-container ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-container ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body style="padding: 0px;">
+  <header class="header">
+    <div class="logo">
+      <img
+        src="https://static.wixstatic.com/media/426700_b63c410489c04a34982e47d44f85b6d7~mv2.jpg/v1/fill/w_143,h_38,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo-s-1%20(1).jpg"
+        alt="sihauli logo" style="margin-left: 20px; border-radius: 8px;">
+      <div class="company-info">
+        <h1>SEO DEMO</h1>
+        <p>GST: 03AAACIO778AI27</p>
+      </div>
+    </div>
+    <a href="{% url 'catalog1_send_email_popup' %}"><button class="email-button" style="margin-right: 30px;">Send Email</button></a>
+  </header>
+  <main>
+    <!-- General Settings Sidebar -->
+    <div class="general-settings">
+      <div class="sidebar">
+        <ul>
+          <a href="{% url 'catalog1' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Home Page</li>
+          </a>
+          <a href="{% url 'catalog1_company_profile' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Company Profile</li>
+          </a>
+          <a href="{% url 'catalog1_contactus' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Contact Us</li>
+          </a>
+          <a href="{% url 'catalog1_viewall' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Our Products</li>
+          </a>
+          <a href="{% url 'catalog1_third_level' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Third Level</li>
+          </a>
+          <li><i class="fa-solid fa-bell"></i><a href="{% url 'catalog1_blank_catagory' %}"
+              style="text-decoration: none; color:inherit;"> Blank Catagory</a>
+            <ul class="submenu1">
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>New Large Image (1500 1500)</li>
+              </a>
+            </ul>
+          </li>
+          <a href="{% url 'catalog1_indian_tea' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Indian Tea</li>
+          </a>
+          <a href="{% url 'catalog1_master_multi_level_one' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Master Multi Level One</li>
+          </a>
+          <a href="#" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Master Multi Level</li>
+          </a>
+          <li><i class="fa-solid fa-bell"></i><a href="{% url 'catalog1_paper_sheet' %}"
+              style="text-decoration: none; color:inherit;"> Paper Sheets</a>
+            <ul class="submenu1">
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>Dimethoate 30 Percent EC Liquid</li>
+              </a>
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>Diesel Fired Boiler</li>
+              </a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <section class="content">
+      <div class="contact-container" style="width: 90%;">
+        <div class="contact-details">
+          <h2>Contact Details</h2>
+          <p><strong>👤 Abhishek</strong><br>Project Manager</p>
+          <p>📞 Mobile: <a href="tel:+919205073393">+91 9205073393</a></p>
+          <p>📍 Sihauli Digital PVT.LTD, virar, Maharashtra, India</p>
+          <div class="buttons"><br>
+            <button class="call-button" onclick="alert('Calling Abhishek...')">CALL ME FREE</button>
+            <button class="sms-button" onclick="alert('Sending SMS to Abhishek...')">SEND SMS</button>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2>Contact Us</h2>
+          <div class="buttons-group">
+            <button>Get Quotation</button>
+            <button>Get Price List</button>
+            <button>Discuss Requirement</button>
+          </div>
+          <textarea placeholder="Tell us your requirement"></textarea>
+          <div class="phone-input">
+            <span style="margin-left: 2%;">🇮🇳 +91</span>
+            <input type="text" placeholder="Mobile number">
+          </div>
+          <button class="contact-now" onclick="submitForm()" style="margin-left: 25%;">Contact Now</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  </div>
+  </div>
+  </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>
+          Sector 136, Noida - 201301, Uttar Pradesh, India <br><br>
+          <b>Phone:</b> +91-1234567890 <br><br>
+          <b>Richa Bharti (Project Manager)</b><br><br>
+          <b>Mobile:</b> 09540704170, 09818145219, 09625612871, 09540704170, 09818145219, 09625612871 <br><br>
+          Sector 136, Noida - 201301, Uttar Pradesh, India
+        </p>
+      </div>
+      <div class="quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li>→ Home Page</li>
+          <li>→ Company Profile</li>
+          <li>→ Our Products</li>
+          <li>→ Contact Us</li>
+        </ul>
+      </div>
+      <div class="our-products">
+        <h3>Our Products</h3>
+        <ul>
+          <li>→ Third Level</li>
+          <li>→ Indian Tea</li>
+          <li>→ Master Multi Level</li>
+          <li>→ Steel Pipes</li>
+          <li>→ Aluminum Castings</li>
+          <li>→ Sub Multi Level One</li>
+        </ul>
+      </div>
+      <div class="other-products">
+        <h3>More Products</h3>
+        <ul>
+          <li>→ Blank Category</li>
+          <li>→ Master Multi Level One</li>
+          <li>→ Paper Sheets</li>
+          <li>→ Agriculture Insecticides</li>
+          <li>→ Cabin Container</li>
+          <li>→ Sub Multi Level Three</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function togglesubmenu1(submenu1Id, event) {
+      event.stopPropagation();
+      let submenu1 = document.getElementById(submenu1Id);
+
+      // Close all other submenu1s
+      document.querySelectorAll(".submenu1").forEach(item => {
+        if (item !== submenu1) {
+          item.style.display = "none";
+        }
+      });
+
+      // Toggle the clicked submenu1
+      submenu1.style.display = (submenu1.style.display === "block") ? "none" : "block";
+    }
+
+    // Hide all submenu1s when clicking outside
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".submenu1").forEach(item => {
+        item.style.display = "none";
+      });
+    });
+
+    // Prevent submenu1 from closing when clicking inside
+    document.querySelectorAll(".submenu1").forEach(item => {
+      item.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    });
+
+    function togglesubmenu1(id, event) {
+      event.stopPropagation(); // Prevents parent menu closing
+      var submenu = document.getElementById(id);
+      if (submenu.style.display === "none" || submenu.style.display === "") {
+        submenu.style.display = "block";
+      } else {
+        submenu.style.display = "none";
+      }
+    }
+
+
+
+    function submitForm() {
+      alert(" Your Contact Request Has Been Submitted Successfully!");
+    }
+  </script>
+</body>
+</html>

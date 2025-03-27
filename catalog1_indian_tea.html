@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    header,
+
+    footer {
+      width: 100%;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-info h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .company-info p {
+      font-size: 12px;
+      margin: 0;
+      color: #555;
+    }
+
+    .email-button {
+      background: #2b6ed8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    main {
+      display: flex;
+      padding: 20px;
+    }
+
+    .general-settings {
+      width: 340px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      height: fit-content;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .sidebar ul li:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .submenu1 {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background: white;
+      color: black;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      min-width: 200px;
+    }
+
+    .submenu1 li {
+      padding: 10px;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+
+    .sidebar ul li:hover>.submenu1 {
+      display: block;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+
+    h1 {
+      color: #000;
+    }
+
+    .description {
+      color: #555;
+      text-align: justify;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .product-grid {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      width: 45%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .product-card h2 {
+      color: #0056b3;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .inquiry-btn {
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 16px;
+    }
+
+    .inquiry-btn:hover {
+      background-color: #b71c1c;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      width: 400px;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .quantity-btn {
+      margin: 5px;
+      padding: 8px 12px;
+      background-color: #e0e0e0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .selected {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .submit-btn {
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 16px;
+      width: 92%;
+    }
+
+    textarea,
+    input[type="text"] {
+      height: 60px;
+      font-size: 16px;
+    }
+
+    footer {
+      background: #f8f8f8;
+      padding: 20px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-container div {
+      width: 23%;
+    }
+
+    .footer-container h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-container ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-container ul li {
+      margin-bottom: 5px;
+    }
+
+    .top-image {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      width: 100%;
+      margin: auto;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img
+        src="https://static.wixstatic.com/media/426700_b63c410489c04a34982e47d44f85b6d7~mv2.jpg/v1/fill/w_143,h_38,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo-s-1%20(1).jpg"
+        alt="sihauli logo" style="margin-left: 20px; border-radius: 8px;">
+      <div class="company-info">
+        <h1>SEO DEMO</h1>
+        <p>GST: 03AAACIO778AI27</p>
+      </div>
+    </div>
+    <a href="{% url 'catalog1_send_email_popup' %}"><button class="email-button" style="margin-right: 20px;">Send Email</button></a>
+  </header>
+  <main>
+    <!-- General Settings Sidebar -->
+    <div class="general-settings">
+      <div class="sidebar">
+        <ul>
+          <a href="{% url 'catalog1' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Home Page</li>
+          </a>
+          <a href="{% url 'catalog1_company_profile' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Company Profile</li>
+          </a>
+          <a href="{% url 'catalog1_contactus' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Contact Us</li>
+          </a>
+          <a href="{% url 'catalog1_viewall' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Our Products</li>
+          </a>
+          <a href="{% url 'catalog1_third_level' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Third Level</li>
+          </a>
+          <li><i class="fa-solid fa-bell"></i><a href="{% url 'catalog1_blank_catagory' %}"
+              style="text-decoration: none; color:inherit;"> Blank Catagory</a>
+            <ul class="submenu1">
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>New Large Image (1500 1500)</li>
+              </a>
+            </ul>
+          </li>
+          <a href="{% url 'catalog1_indian_tea' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Indian Tea</li>
+          </a>
+          <a href="{% url 'catalog1_master_multi_level_one' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Master Multi Level One</li>
+          </a>
+          <a href="#" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Master Multi Level</li>
+          </a>
+          <li><i class="fa-solid fa-bell"></i><a href="{% url 'catalog1_paper_sheet' %}"
+              style="text-decoration: none; color:inherit;"> Paper Sheets</a>
+            <ul class="submenu1">
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>Dimethoate 30 Percent EC Liquid</li>
+              </a>
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>Diesel Fired Boiler</li>
+              </a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container1">
+        <div class="container2">
+          <h1>Indian Tea</h1>
+          <p class="description">A gear motor is a compact and efficient device that combines an electric motor with a
+            gearbox to deliver controlled speed and increased torque. It is widely used in various industrial and
+            commercial applications, including conveyor systems, automation, robotics, and automotive industries. Gear
+            motors help optimize performance by reducing speed while increasing output torque, making them ideal for
+            heavy-duty operation.</p>
+          <p class="description">A gear motor is a compact and efficient device that combines an electric motor with a
+            gearbox to deliver controlled speed and increased torque. It is widely used in various industrial and
+            commercial applications, including conveyor systems, automation, robotics, and automotive industries. Gear
+            motors help optimize performance by reducing speed while increasing output torque, making them ideal for
+            heavy-duty operation. A gear motor is a compact and efficient device that combines an electric motor with a
+            gearbox to deliver controlled speed and increased torque.
+            It is widely used in various industrial and commercial applications, including conveyor systems, automation,
+            robotics, and automotive industries. Gear motors help optimize performance by reducing speed while
+            increasing output torque, making them ideal for heavy-duty operation.</p>
+          <div class="product-grid">
+            <div class="product-card">
+              <h2>Darjeeling Tea</h2>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuZGue6g1u-1sD_PRSKTabpjpIEI_T1lYbjsQQThf4SDhPte4SucLFR5M&s"
+                alt="Darjeeling Tea" class="product-image" />
+              <button class="inquiry-btn" onclick="openModal('Darjeeling Tea')">SEND INQUIRY</button>
+            </div>
+
+            <div class="product-card">
+              <h2>Masala Chai</h2>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuZGue6g1u-1sD_PRSKTabpjpIEI_T1lYbjsQQThf4SDhPte4SucLFR5M&s"
+                alt="Masala Chai" class="product-image" />
+              <button class="inquiry-btn" onclick="openModal('Masala Chai')">SEND INQUIRY</button>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal" id="inquiryModal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Tell us about your requirement</h2>
+            <p id="productName"></p>
+            <div>
+              <button class="quantity-btn" onclick="selectQuantity(50)">50</button>
+              <button class="quantity-btn" onclick="selectQuantity(100)">100</button>
+              <button class="quantity-btn" onclick="selectQuantity(200)">200</button>
+              <button class="quantity-btn" onclick="selectQuantity(250)">250</button>
+              <button class="quantity-btn" onclick="selectQuantity(500)">500</button>
+              <button class="quantity-btn" onclick="selectQuantity(1000)">1000+</button>
+            </div>
+            <textarea placeholder="Additional detail" style="width: 90%; margin-top: 10px;"></textarea>
+            <div style="display: flex; margin-top: 10px;">
+              <select>
+                <option>+91</option>
+              </select>
+              <input type="number" placeholder="Mobile number" style="width: 76%; margin-left: 10px;" />
+            </div>
+            <button class="submit-btn">Submit Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>
+          Sector 136, Noida - 201301, Uttar Pradesh, India <br><br>
+          <b>Phone:</b> +91-1234567890 <br><br>
+          <b>Richa Bharti (Project Manager)</b><br><br>
+          <b>Mobile:</b> 09540704170, 09818145219, 09625612871, 09540704170, 09818145219, 09625612871 <br><br>
+          Sector 136, Noida - 201301, Uttar Pradesh, India
+        </p>
+      </div>
+      <div class="quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li>→ Home Page</li>
+          <li>→ Company Profile</li>
+          <li>→ Our Products</li>
+          <li>→ Contact Us</li>
+        </ul>
+      </div>
+      <div class="our-products">
+        <h3>Our Products</h3>
+        <ul>
+          <li>→ Third Level</li>
+          <li>→ Indian Tea</li>
+          <li>→ Master Multi Level</li>
+          <li>→ Steel Pipes</li>
+          <li>→ Aluminum Castings</li>
+          <li>→ Sub Multi Level One</li>
+        </ul>
+      </div>
+      <div class="other-products">
+        <h3>More Products</h3>
+        <ul>
+          <li>→ Blank Category</li>
+          <li>→ Master Multi Level One</li>
+          <li>→ Paper Sheets</li>
+          <li>→ Agriculture Insecticides</li>
+          <li>→ Cabin Container</li>
+          <li>→ Sub Multi Level Three</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function togglesubmenu1(submenu1Id, event) {
+      event.stopPropagation();
+      let submenu1 = document.getElementById(submenu1Id);
+
+      // Close all other submenu1s
+      document.querySelectorAll(".submenu1").forEach(item => {
+        if (item !== submenu1) {
+          item.style.display = "none";
+        }
+      });
+
+      // Toggle the clicked submenu1
+      submenu1.style.display = (submenu1.style.display === "block") ? "none" : "block";
+    }
+
+    // Hide all submenu1s when clicking outside
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".submenu1").forEach(item => {
+        item.style.display = "none";
+      });
+    });
+
+    // Prevent submenu1 from closing when clicking inside
+    document.querySelectorAll(".submenu1").forEach(item => {
+      item.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    });
+
+    function togglesubmenu1(id, event) {
+      event.stopPropagation(); // Prevents parent menu closing
+      var submenu = document.getElementById(id);
+      if (submenu.style.display === "none" || submenu.style.display === "") {
+        submenu.style.display = "block";
+      } else {
+        submenu.style.display = "none";
+      }
+    }
+
+
+
+
+    function openModal(productName) {
+      document.getElementById('productName').textContent = productName;
+      document.getElementById('inquiryModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('inquiryModal').style.display = 'none';
+    }
+
+    function selectQuantity(quantity) {
+      document.querySelectorAll('.quantity-btn').forEach(btn => btn.classList.remove('selected'));
+      event.target.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

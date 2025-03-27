@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>send email</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+    .container {
+      display: flex;
+      width: 700px;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .left-panel {
+      background-color: #f3f3f3;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .left-panel img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    .left-panel p {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+    .right-panel {
+      width: 70%;
+      padding: 40px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .input-group span {
+      background-color: #f3f3f3;
+      padding: 10px;
+      border-right: 1px solid #ccc;
+    }
+    input[type="tel"] {
+      border: none;
+      outline: none;
+      padding: 10px;
+      width: 100%;
+    }
+    button {
+      background-color: #00b388;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #009e76;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <img src="https://static.wixstatic.com/media/bcbc6e_646f8502f4c74edba0d7f9ff63971233~mv2.jpg/v1/fill/w_165,h_55,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Chemicals%20PVT%20LTD%20(5)_edited.jpg" alt="Sihauli Digital Private Limited Logo" />
+      <p>Sihauli Digital Private Limited</p>
+    </div>
+    <div class="right-panel">
+      <h2>Connect with <strong>Sihauli Digital Private Limited</strong></h2>
+      <p>Get details on your mobile quickly</p>
+      <form id="contactForm" method="post" action="/submit/">
+        {% csrf_token %}
+        <label for="mobile">Mobile Number</label>
+        <div class="input-group">
+          <span>+91</span>
+          <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile" required />
+        </div>
+        <p>We will contact you on this number</p>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

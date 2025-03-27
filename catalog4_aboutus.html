@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sihauli Digital Private Limited</title>
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20%;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .company-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .contact-info button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .contact-info button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20%;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-box input {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .search-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .search-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Banner */
+        .hero-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 40px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .hero-banner {
+            width: 70%;
+            height: 500px;
+            background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+                              url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-content {
+            padding: 50px;
+            max-width: 800px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .hero-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .hero-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Services Section */
+        .service-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 80px 20%;
+            background-color: white;
+        }
+        
+        .section-title {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #3498db;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            width: 320px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .service-card h3 {
+            margin: 15px 0;
+            color: #2c3e50;
+            font-size: 1.4rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .service-card:hover h3 {
+            color: #3498db;
+        }
+        
+        .service-card p {
+            color: #7f8c8d;
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .service-card button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        .service-card button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: #2c3e50;
+            padding: 80px 20%;
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-details {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+        
+        .contact-details p {
+            margin: 18px 0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ecf0f1;
+        }
+        
+        .contact-details a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+        
+        .contact-details a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        .contact-form {
+            flex: 1;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #2c3e50;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-form textarea,
+        .contact-form input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form textarea:focus,
+        .contact-form input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        .contact-form button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 70px 20% 30px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            gap: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #3498db;
+        }
+        
+        .footer-column a {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            gap: 12px;
+        }
+        
+        .footer-column a:hover {
+            color: #3498db;
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: #7f8c8d;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icons a:hover {
+            color: white;
+            background-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .footer-bottom a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer-bottom a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        /* Active Nav Link */
+        .nav-links li a.active {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .nav-links li a.active::after {
+            background-color: #3498db;
+            width: 100%;
+        }
+        
+        @media (max-width: 1200px) {
+            .header-top, .navbar, .service-section, .contact-section, .footer {
+                padding: 15px 10%;
+            }
+            
+            .hero-banner {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .contact-info button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                margin-bottom: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .search-box {
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .search-box input {
+                width: 100%;
+            }
+            
+            .hero-banner {
+                width: 95%;
+                height: 400px;
+            }
+            
+            .hero-content {
+                padding: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .service-section {
+                padding: 50px 5%;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+            
+            .footer {
+                padding: 50px 5% 30px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <div class="company-info">
+                    <div class="logo-text">The Sihauli Digital Private Limited</div>
+                    <p><i class="fas fa-map-marker-alt"></i> Rustamji Building J19 Shop Number 102 Global City Virar West</p>
+                </div>
+            </div>
+            <div class="contact-info">
+                <button class="call-btn"><i class="fas fa-phone-alt"></i> Call 088XXXXXXXX</button>
+                <button class="email-btn"><i class="fas fa-envelope"></i> Send Email</button>
+            </div>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="{% url 'catalog4' %}" class="{% if request.path == '/catalog2/' %}active{% endif %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'catalog4_aboutus' %}" class="{% if request.path == '/catalog2/aboutus/' %}active{% endif %}"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="{% url 'catalog4_contactus' %}" class="{% if request.path == '/catalog2/contactus/' %}active{% endif %}"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search Products/Services">
+                <button class="search-btn"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <div class="hero-container">
+        <div class="hero-banner">
+            <div class="hero-content">
+                <h1>Digital Solutions for Your Business</h1>
+                <p>We provide innovative digital services to help your business grow and succeed in the modern marketplace. Our team of experts delivers customized solutions tailored to your specific needs.</p>
+                <button class="hero-btn"><i class="fas fa-rocket"></i> Get Started Today</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="service-section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>We offer comprehensive digital solutions to help your business thrive in the online world</p>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Web Development">
+            <h3>Web Development</h3>
+            <p>Custom websites and web applications built with the latest technologies to ensure performance and scalability.</p>
+            <button><i class="fas fa-laptop-code"></i> Learn More</button>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Digital Marketing">
+            <h3>Digital Marketing</h3>
+            <p>Comprehensive digital marketing strategies to increase your online presence and drive more customers.</p>
+            <button><i class="fas fa-bullhorn"></i> Learn More</button>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mobile Apps">
+            <h3>Mobile Applications</h3>
+            <p>Native and cross-platform mobile applications designed for both iOS and Android platforms.</p>
+            <button><i class="fas fa-mobile-alt"></i> Learn More</button>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-details">
+                <h3><i class="fas fa-address-card"></i> Contact Us</h3>
+                <p><i class="fas fa-user"></i> Deepak Yadav</p>
+                <p><i class="fas fa-building"></i> <strong>The Sihauli Digital Private Limited</strong></p>
+                <p><i class="fas fa-map-pin"></i> C1, Plot No. 219</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rustamji Building J19 Shop Number 102 Global City Virar West</p>
+                <p><a href="#"><i class="fas fa-directions"></i> Get Directions</a></p>
+                <p><a href="#"><i class="fas fa-envelope"></i> Send Email</a></p>
+                <p><a href="#"><i class="fas fa-phone-alt"></i> 088XXXXXXXX</a></p>
+            </div>
+            <div class="contact-form">
+                <h3><i class="fas fa-edit"></i> Describe Your Requirements</h3>
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment"></i> Your Message</label>
+                    <textarea id="message" placeholder="Enter your requirements..."></textarea>
+                </div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4><i class="fas fa-building"></i> Company</h4>
+                <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="#"><i class="fas fa-newspaper"></i> News</a>
+                <a href="#"><i class="fas fa-sitemap"></i> Sitemap</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-cogs"></i> Our Services</h4>
+                <a href="#"><i class="fas fa-laptop-code"></i> Web Development</a>
+                <a href="#"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+                <a href="#"><i class="fas fa-mobile-alt"></i> Mobile Applications</a>
+                <a href="#"><i class="fas fa-eye"></i> View All Services</a>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
+                <a href="#"><i class="fas fa-phone"></i> +91 88XXXXXXXX</a>
+                <a href="#"><i class="fas fa-envelope"></i> info@sihaulidigital.com</a>
+                <a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</a>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="far fa-copyright"></i> 2023 The Sihauli Digital Private Limited. All Rights Reserved | <a href="#"><i class="fas fa-file-contract"></i> Terms of Use</a> | <a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></p>
+            <p>Developed and Managed by <a href="#"><i class="fas fa-code"></i> Sihauli Digital PVT LTD</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get current URL path
+            const currentPath = window.location.pathname;
+            
+            // Get all nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // Remove active class from all links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                
+                // Check if link's href matches current path
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Add click event to manually set active class
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        document.querySelector('.call-btn').addEventListener('click', function() {
+            alert('Calling 088XXXXXXXX...');
+        });
+
+        document.querySelector('.email-btn').addEventListener('click', function() {
+            alert('Opening email client...');
+        });
+
+        document.querySelector('.hero-btn').addEventListener('click', function() {
+            document.querySelector('.contact-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelectorAll('.service-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const serviceName = this.parentElement.querySelector('h3').textContent;
+                alert(`Requesting more information about ${serviceName}`);
+            });
+        });
+
+        document.querySelector('.contact-form button').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                alert('Please fill in all fields');
+            } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                alert('Please enter a valid email address');
+            } else {
+                alert('Thank you for your submission! We will contact you soon.');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            }
+        });
+
+        document.querySelectorAll('.contact-details a, .footer-column a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    const action = this.textContent.trim();
+                    alert(`${action} clicked - this would open the appropriate service`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

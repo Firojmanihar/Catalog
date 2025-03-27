@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    header,
+
+    footer {
+      width: 100%;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-info h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .company-info p {
+      font-size: 12px;
+      margin: 0;
+      color: #555;
+    }
+
+    .email-button {
+      background: #2b6ed8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    main {
+      display: flex;
+      padding: 20px;
+    }
+
+    .general-settings {
+      width: 340px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      height: fit-content;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .sidebar ul li:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .submenu1 {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      background: white;
+      color: black;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      min-width: 200px;
+    }
+
+    .submenu1 li {
+      padding: 10px;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      margin: 6px 0;
+    }
+
+    .sidebar ul li:hover>.submenu1 {
+      display: block;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .content {
+      width: 100%;
+      margin: auto;
+      text-align: left;
+    }
+
+    .container1 {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      text-align: justify;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      background-color: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .no-image {
+      width: 100%;
+      height: 150px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: #888;
+    }
+
+    .price {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+
+    footer {
+      background: #f8f8f8;
+      padding: 20px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-container div {
+      width: 23%;
+    }
+
+    .footer-container h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-container ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-container ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img
+        src="https://static.wixstatic.com/media/426700_b63c410489c04a34982e47d44f85b6d7~mv2.jpg/v1/fill/w_143,h_38,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo-s-1%20(1).jpg"
+        alt="sihauli logo" style="margin-left: 20px; border-radius: 8px;">
+      <div class="company-info">
+        <h1>SEO DEMO</h1>
+        <p>GST: 03AAACIO778AI27</p>
+      </div>
+    </div>
+    <a href="{% url 'catalog1_send_email_popup' %}"><button class="email-button" style="margin-right: 20px;">Send Email</button></a>
+  </header>
+  <main>
+    <!-- General Settings Sidebar -->
+    <div class="general-settings">
+      <div class="sidebar">
+        <ul>
+          <a href="{% url 'catalog1' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Home Page</li>
+          </a>
+          <a href="{% url 'catalog1_company_profile' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Company Profile</li>
+          </a>
+          <a href="{% url 'catalog1_contactus' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Contact Us</li>
+          </a>
+          <a href="{% url 'catalog1_viewall' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Our Products</li>
+          </a>
+          <a href="{% url 'catalog1_third_level' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Third Level</li>
+          </a>
+          <li><i class="fa-solid fa-bell"></i><a href="{% url 'catalog1_blank_catagory' %}"
+              style="text-decoration: none; color:inherit;"> Blank Catagory</a>
+            <ul class="submenu1">
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>New Large Image (1500 1500)</li>
+              </a>
+            </ul>
+          </li>
+          <a href="{% url 'catalog1_indian_tea' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Indian Tea</li>
+          </a>
+          <a href="{% url 'catalog1_master_multi_level_one' %}" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Master Multi Level One</li>
+          </a>
+          <a href="#" style="text-decoration: none; color:inherit;">
+            <li><i class="fa-solid fa-bell"></i>Master Multi Level</li>
+          </a>
+          <li><i class="fa-solid fa-bell"></i><a href="{% url 'catalog1_paper_sheet' %}"
+              style="text-decoration: none; color:inherit;"> Paper Sheets</a>
+            <ul class="submenu1">
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>Dimethoate 30 Percent EC Liquid</li>
+              </a>
+              <a href="#" style="text-decoration: none; color:inherit;">
+                <li>Diesel Fired Boiler</li>
+              </a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <section class="content">
+      <div class="container1">
+        <div class="container">
+          <h1>Blank Category</h1>
+          <p>Unlock the advantages of our Blank Category, a remarkable product line that caters to the needs of
+            exporters, service providers, distributors, suppliers, wholesalers, and fabricators. With over 25 years of
+            experience in the industry, we have established ourselves as a leading player in the market. Our supply
+            ability in the domestic market is All India, and we export to Asia.</p>
+          <p>Our Blank Category offers outstanding benefits that are hard to match. Whether you are looking for musical
+            fountains, jute products, or mobile phones, our Blank Category has got you covered. Our product line is
+            outstanding, and we offer the best quality products at competitive prices.</p>
+          <p>If you are looking for a hot deal, our Blank Category is the perfect choice for you. Our products are
+            trending in the market, and we offer the best deals that you can get. With our Blank Category, you can get
+            the best value for your money.</p>
+          <p>Our Blank Category is designed to meet the needs of our customers. We offer a wide range of products that
+            are suitable for various applications. Whether you are an exporter, service provider, distributor, supplier,
+            wholesaler, or fabricator, our Blank Category has something for everyone.</p>
+          <p>Our Blank Category is known for its exceptional features. We offer high-quality products that are durable
+            and long-lasting. Our products are designed to meet the highest standards of quality, and we ensure that our
+            customers get the best products. With our Blank Category, you can be assured of getting the best products
+            that meet your requirements.</p>
+          <p>In conclusion, our Blank Category is a remarkable product line that offers outstanding benefits. Whether
+            you are looking for musical fountains, jute products, or mobile phones, our Blank Category has got you
+            covered. With our hot deals and trending products, you can get the best value for your money. So, get in
+            touch with us today and unlock the advantages of our Blank Category.</p>
+          <div class="product-grid">
+            <div class="product-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSPhMt_NsuoeuQfY0-UbEVRm-tYBjDuKLNwEAtDnh_wwrsLJ0fQgrkB4&s" alt="New Large Image" class="product-image" />
+              <h2>New Large Image(150...)</h2>
+              <p class="price">3000 INR/Box</p>
+              <p>Product Code: 1000</p>
+              <p>Supply Ability: 100 Per Week</p>
+              <p>Minimum Order Quantity: 5000</p>
+              <p>Delivery Time: 1 Month</p>
+            </div>
+            <div class="product-card">
+              <img src="data:image/jpeg;base64,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" alt="Test products" class="product-image" />
+              <h2>Test products</h2>
+              <p class="price">5678 EUR/Bottle</p>
+              <p>Product Code: 001</p>
+              <p>Supply Ability: 7 Per Week</p>
+              <p>Minimum Order Quantity: 1234</p>
+              <p>Delivery Time: 10 Hours</p>
+            </div>
+            <div class="product-card">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShAkmay2J2hTWn6CjqcWfuQoZE94p_9x58U6WmGP9T7UkteW3ik_XoXgI&usqp=CAE&s" alt="product jute" class="product-image" />
+              <h2>product jute</h2>
+              <p class="price">22.0 JPY</p>
+              <p>Product Code: 03</p>
+              <p>Minimum Order Quantity: 40</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p>
+          Sector 136, Noida - 201301, Uttar Pradesh, India <br><br>
+          <b>Phone:</b> +91-1234567890 <br><br>
+          <b>Richa Bharti (Project Manager)</b><br><br>
+          <b>Mobile:</b> 09540704170, 09818145219, 09625612871, 09540704170, 09818145219, 09625612871 <br><br>
+          Sector 136, Noida - 201301, Uttar Pradesh, India
+        </p>
+      </div>
+      <div class="quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li>→ Home Page</li>
+          <li>→ Company Profile</li>
+          <li>→ Our Products</li>
+          <li>→ Contact Us</li>
+        </ul>
+      </div>
+      <div class="our-products">
+        <h3>Our Products</h3>
+        <ul>
+          <li>→ Third Level</li>
+          <li>→ Indian Tea</li>
+          <li>→ Master Multi Level</li>
+          <li>→ Steel Pipes</li>
+          <li>→ Aluminum Castings</li>
+          <li>→ Sub Multi Level One</li>
+        </ul>
+      </div>
+      <div class="other-products">
+        <h3>More Products</h3>
+        <ul>
+          <li>→ Blank Category</li>
+          <li>→ Master Multi Level One</li>
+          <li>→ Paper Sheets</li>
+          <li>→ Agriculture Insecticides</li>
+          <li>→ Cabin Container</li>
+          <li>→ Sub Multi Level Three</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function togglesubmenu1(submenu1Id, event) {
+      event.stopPropagation();
+      let submenu1 = document.getElementById(submenu1Id);
+
+      // Close all other submenu1s
+      document.querySelectorAll(".submenu1").forEach(item => {
+        if (item !== submenu1) {
+          item.style.display = "none";
+        }
+      });
+
+      // Toggle the clicked submenu1
+      submenu1.style.display = (submenu1.style.display === "block") ? "none" : "block";
+    }
+
+    // Hide all submenu1s when clicking outside
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".submenu1").forEach(item => {
+        item.style.display = "none";
+      });
+    });
+
+    // Prevent submenu1 from closing when clicking inside
+    document.querySelectorAll(".submenu1").forEach(item => {
+      item.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    });
+
+    function togglesubmenu1(id, event) {
+      event.stopPropagation(); // Prevents parent menu closing
+      var submenu = document.getElementById(id);
+      if (submenu.style.display === "none" || submenu.style.display === "") {
+        submenu.style.display = "block";
+      } else {
+        submenu.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
