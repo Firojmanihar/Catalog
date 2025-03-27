@@ -51,3 +51,8 @@ Search: Find products easily with a search feature.
 4.Push the branch (git push origin feature-name).
 
 5.Submit a pull request.
+
+# Catalog Image
+![Image](https://github.com/user-attachments/assets/f06c77b3-cd1f-46d2-9618-dff04ff0615a)
+
+![Image](https://github.com/user-attachments/assets/8e35f8b6-09fd-486f-a1f7-20704649d23d)
